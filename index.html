@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Career Guidance Chatbot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+  <div class="app-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">CareerBot</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/" class="nav-item active">💬 Chat</a>
+        <a href="/history" class="nav-item">📜 History</a>
+      </nav>
+      <div class="sidebar-info">
+        <h4>How it works</h4>
+        <ol>
+          <li>Enter your skills</li>
+          <li>Share your interests</li>
+          <li>Get career matches</li>
+          <li>Explore guidance</li>
+        </ol>
+      </div>
+      <div class="sidebar-footer">Made with ❤️ by Group 02</div>
+    </aside>
+
+    <!-- Main Chat Area -->
+    <main class="chat-main">
+      <header class="chat-header">
+        <div class="header-info">
+          <div class="bot-avatar">🤖</div>
+          <div>
+            <div class="bot-name">Career Guidance Assistant</div>
+            <div class="bot-status"><span class="status-dot"></span> Online</div>
+          </div>
+        </div>
+        <button class="reset-btn" onclick="resetChat()">🔄 New Chat</button>
+      </header>
+
+      <div class="chat-messages" id="chatMessages">
+        <div class="welcome-msg">
+          <div class="welcome-icon">🚀</div>
+          <p>Starting your personalized career guidance session...</p>
+        </div>
+      </div>
+
+      <div class="chat-input-area">
+        <div class="quick-options" id="quickOptions"></div>
+        <div class="input-row">
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Type your message here..."
+            autocomplete="off"
+            onkeypress="handleKeyPress(event)"
+          />
+          <button class="send-btn" onclick="sendMessage()">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>

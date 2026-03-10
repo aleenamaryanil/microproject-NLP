@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat History – CareerBot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+  <div class="app-wrapper">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">CareerBot</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/" class="nav-item">💬 Chat</a>
+        <a href="/history" class="nav-item active">📜 History</a>
+      </nav>
+      <div class="sidebar-footer">Made with ❤️ by Group 02</div>
+    </aside>
+
+    <main class="chat-main">
+      <header class="chat-header">
+        <div class="header-info">
+          <div class="bot-avatar">📜</div>
+          <div>
+            <div class="bot-name">Session History</div>
+            <div class="bot-status">Recent Predictions</div>
+          </div>
+        </div>
+        <a href="/" class="reset-btn">💬 New Chat</a>
+      </header>
+
+      <div class="history-container">
+        {% if chats %}
+          {% for chat in chats %}
+          <div class="history-card">
+            <div class="history-meta">
+              <span class="history-career">🏆 {{ chat.career_predicted or "N/A" }}</span>
+              <span class="history-time">{{ chat.timestamp.strftime('%d %b %Y, %I:%M %p') }}</span>
+            </div>
+            <div class="history-body">{{ chat.message }}</div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="empty-history">
+            <div style="font-size:3rem;">📭</div>
+            <p>No chat history yet. Start a conversation!</p>
+            <a href="/" class="reset-btn" style="display:inline-block;margin-top:1rem;">Go to Chat</a>
+          </div>
+        {% endif %}
+      </div>
+    </main>
+  </div>
+</body>
+</html>
